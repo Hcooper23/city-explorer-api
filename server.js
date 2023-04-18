@@ -1,54 +1,50 @@
 'use strict';
 
-console.log('My first server');
-
-
 const express = require('express');
+const cors = require('cors');
+const weatherData = require('./data/weather.json');
+const { handleNotFoundError } = require('./notFoundError');
+const { handleServerError } = require('./serverError');
 require('dotenv').config();
-let weatherData = require('./data/weather.json');
-
-// const cors = require('cors');
-
-
-
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 
+const PORT = process.env.PORT || 3002;
 
+// app.get('/', (req, res) => {
+//   res.send('Hello');
+// });
 
-const PORT = process.env.PORT || 3001;
+app.get('/weather', (req, res) => {
+  const { searchQuery } = req.query;
+  const cityData = weatherData.find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
+  // find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
+  // city => city.lat === lat && city.lon === lon && 
 
+  // if (!cityData) {
+  //   return handleNotFoundError(req, res);
+  // }
 
-app.get('/', (request, response) => {
-  response.send('Hello');
+  const forecastData = cityData.data.map(day => new Forecast(day));
+
+  res.send(forecastData);
 });
 
-app.get('/weather', (request, response) => {
-  let city_name = request.query.city_name;
-  let dataToSend = weatherData.find(city => city.city_name.toLowerCase() === city_name.toLowerCase());
-
-  let cityArr = dataToSend.data.map(cityData => new WeatherForecast(cityData));
-  response.send(cityArr);
-});
-
-
-app.get('*', (request, response) => {
-  response.send('some message');
-});
-
-
-
-
-class WeatherForecast {
-  constructor(cityData) {
-    this.date = cityData.valid_date;
-    this.description = cityData.weather.description;
+class Forecast {
+  constructor(dayData) {
+    this.date = dayData.valid_date;
+    this.description = dayData.weather.description;
+    this.minTemp = dayData.min_temp;
+    this.maxTemp = dayData.max_temp;
+    this.icon = dayData.weather.icon;
   }
 }
 
+app.use('*', (req, res) => {
+  handleNotFoundError(req, res);
+});
 
-// LISTEN
-// start the server
+app.use(handleServerError);
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
