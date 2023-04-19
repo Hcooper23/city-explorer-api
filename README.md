@@ -57,35 +57,40 @@ Your README.md must include:
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
-
+Making a react project that involves making requests to a third-party API using the Axios library. The project involves working with a partner for the initial planning stages and then working independently to implement the plan. The Trello project management tool will be used to track progress and complete the required features, which are listed as user stories with acceptance criteria and checklists of feature tasks. The Location IQ Geocoding API is specifically mentioned as the API to be used. The text emphasizes the importance of carefully executing tasks in order, as they are often dependencies of one another.
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Get there keys and determine the flow of data and the lay out of the website.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+React, Bootstrap, LocationIQ, Trello, and Axios.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+04-17-23- 7:27PM EST (Readme update and merge to main for lab 06 completion)
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+04-18-23-3:00PM EST (Began building out the server back end of weather json for use as a API)
+
+04-18-23-7:00PM EST (Working back end accoridng to instructor for the APIA/JSON mixed back end server)
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Websites: Location IQ Bootstrap
+
+TA: Rual Zarate
+
+Drawing partners: Micahel Grant Juan Olmedo
+
+Instructor: JB Tellez Aubrey Patterson
 
 ## Time Estimates
 
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: ________________________________
+Estimate of time needed to complete: Back-end: 2 Hours/ Front-end: 3 Hours
 
-Estimate of time needed to complete: _____
+Start time: Back end- 3:00PM EST-7:PM EST / Front end- 10:00PM EST- 12:30AM EST 
 
-Start time: _____
+Finish time: Not done 404 error form who knows where anymore...beyond lost????
 
-Finish time: _____
-
-Actual time needed to complete: _____
+Actual time needed to complete: not done no clue where to go next been on a rabbit hole search for about 30- 45 minutes.
 
 Add this information to your README.
 
