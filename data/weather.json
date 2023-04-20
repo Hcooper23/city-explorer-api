@@ -274,15 +274,15 @@
                 "min_temp": 6.2,
                 "clouds_mid": 14,
                 "clouds_low": 20
-            }
-        ],
-        "city_name": "Paris",
-        "lon": 2.35,
-        "timezone": "Europe/Paris",
-        "lat": 48.86,
-        "country_code": "FR",
-        "state_code": "11"
-    },
+             }
+         ],
+         "city_name": "Paris",
+         "lon": "2.35",
+         "timezone": "Europe/Paris",
+         "lat": "48.86",
+         "country_code": "FR",
+         "state_code": "11"
+     },
     {
         "data": [
             {
@@ -416,13 +416,13 @@
                 "min_temp": 14.6,
                 "clouds_mid": 0,
                 "clouds_low": 0
-            }
-        ],
-        "city_name": "Amman",
-        "lon": 35.91,
-        "timezone": "Asia/Amman",
-        "lat": 31.95,
-        "country_code": "JO",
-        "state_code": "16"
-    }
+             }
+         ],
+         "city_name": "Amman",
+         "lon": "35.91",
+         "timezone": "Asia/Amman",
+         "lat": "31.95",
+         "country_code": "JO",
+         "state_code": "16"
+     }
   ]
