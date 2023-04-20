@@ -1,50 +1,55 @@
 'use strict';
-
 const express = require('express');
-const cors = require('cors');
-const weatherData = require('./data/weather.json');
-const { handleNotFoundError } = require('./notFoundError');
-const { handleServerError } = require('./serverError');
 require('dotenv').config();
+const cors = require('cors');
+let weatherData = require('./data/weather.json');
 
 const app = express();
 app.use(cors());
 
 const PORT = process.env.PORT || 3002;
 
-// app.get('/', (req, res) => {
-//   res.send('Hello');
-// });
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
-app.get('/weather', (req, res) => {
-  const { searchQuery } = req.query;
-  const cityData = weatherData.find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
-  // find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
-  // city => city.lat === lat && city.lon === lon && 
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to my server!');
+});
 
-  // if (!cityData) {
-  //   return handleNotFoundError(req, res);
-  // }
+app.get('/weather', (req, res, next) => {
+  console.log('Weather endpoint hit');
+  console.log('All weather data:', weatherData);
+  try {
+    let lat = parseFloat(req.query.lat);
+    let lon = parseFloat(req.query.lon);
+    let searchQuery = req.query.searchQuery;
+    console.log('lat:', lat, 'lon:', lon, 'searchQuery:', searchQuery);
 
-  const forecastData = cityData.data.map(day => new Forecast(day));
+    let foundWeather = weatherData.find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase() ||
+      Math.abs(parseFloat(city.lat) - parseFloat(lat)) < 0.01 &&
+      Math.abs(parseFloat(city.lon) - parseFloat(lon)) < 0.01);
 
-  res.send(forecastData);
+    if (!foundWeather) {
+      return res.status(404).send('No weather found');
+    }
+    let forecasts = foundWeather.data.map(weatherData => new Forecast(weatherData));
+    res.status(200).send(forecasts);
+  } catch (error) {
+    next(error);
+  }
 });
 
 class Forecast {
-  constructor(dayData) {
-    this.date = dayData.valid_date;
-    this.description = dayData.weather.description;
-    this.minTemp = dayData.min_temp;
-    this.maxTemp = dayData.max_temp;
-    this.icon = dayData.weather.icon;
+  constructor(forecastData) {
+    this.date = forecastData.datetime;
+    this.description = forecastData.weather.description;
   }
 }
 
-app.use('*', (req, res) => {
-  handleNotFoundError(req, res);
+app.get('*', (req, res) => {
+  res.status(404).send('This page is not available');
 });
 
-app.use(handleServerError);
-
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.use((error, req, res, next) => {
+  console.log(error.message);
+  res.status(500).send(error.message);
+});
