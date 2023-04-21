@@ -62,14 +62,28 @@ Making a react project that involves making requests to a third-party API using 
 Get there keys and determine the flow of data and the lay out of the website.
 
 ## Architecture
-React, Bootstrap, LocationIQ, Trello, and Axios.
+React, Bootstrap, Trello, Axios, API'S (WeatherBit, MoviesDB, and Location IQ)
 
 ## Change Log
 04-17-23- 7:27PM EST (Readme update and merge to main for lab 06 completion)
 
 04-18-23-3:00PM EST (Began building out the server back end of weather json for use as a API)
 
-04-18-23-7:00PM EST (Working back end accoridng to instructor for the APIA/JSON mixed back end server)
+04-18-23-7:00PM EST (Working back end according to instructor for the APIA/JSON mixed back end server)
+
+04-18-23-3:00pm EST (Worked on yesterday lab and got Json to display on front)
+
+04-18-23-9:11pm EST (Submitted working back and front end talking to each other)
+
+04-18-23-9:11 EST (Workiong on back end for lab 08)
+
+04-19-23-1:03AM EST (Working deployed server and site running with all trello cards cleared out and meet)
+
+04-20-23-3:00PM EST (worked on refactoring back end and breaking the weather and movies into separate components)
+
+04-20-23-5:00PM EST (worked on refactoring front and breaking the weather and movies into nest inside of the individual files.)
+
+04-20-23-9:30PM EST (Work done on all cards and updates completed)
 
 ## Credit and Collaborations
 Websites: Location IQ Bootstrap
@@ -86,11 +100,11 @@ For each of the lab features, make an estimate of the time it will take you to c
 
 Estimate of time needed to complete: Back-end: 2 Hours/ Front-end: 3 Hours
 
-Start time: Back end- 3:00PM EST-7:PM EST / Front end- 10:00PM EST- 12:30AM EST 
+Start time: Back end- 3:00PM EST-5:00PM EST / Front end- 5:00PM EST- 9:30AM EST 
 
-Finish time: Not done 404 error form who knows where anymore...beyond lost????
+Finish time: Done I believe instructions kinda confusing 
 
-Actual time needed to complete: not done no clue where to go next been on a rabbit hole search for about 30- 45 minutes.
+Actual time needed to complete: Total of 6 Hours and 30 minutes
 
 Add this information to your README.
 
