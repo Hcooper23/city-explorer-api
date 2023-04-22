@@ -85,6 +85,10 @@ React, Bootstrap, Trello, Axios, API'S (WeatherBit, MoviesDB, and Location IQ)
 
 04-20-23-9:30PM EST (Work done on all cards and updates completed)
 
+04-21-23-3:00 PM EST (Working on Back end Server Cache)
+
+04-21-23-10:56 PM EST (Back-edn Server Cache Functioning)
+
 ## Credit and Collaborations
 Websites: Location IQ Bootstrap
 
@@ -98,13 +102,13 @@ Instructor: JB Tellez Aubrey Patterson
 
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Estimate of time needed to complete: Back-end: 2 Hours/ Front-end: 3 Hours
+Estimate of time needed to complete: Back-end: 3 Hours
 
-Start time: Back end- 3:00PM EST-5:00PM EST / Front end- 5:00PM EST- 9:30AM EST 
+Start time: Back end- 3:00PM EST
 
-Finish time: Done I believe instructions kinda confusing 
+Finish time: Back end- 10:56PM EST
 
-Actual time needed to complete: Total of 6 Hours and 30 minutes
+Actual time needed to complete: 6 Hours and 45 Mins
 
 Add this information to your README.
 
