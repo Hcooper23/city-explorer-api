@@ -12,7 +12,16 @@ app.use(cors());
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
-app.get('/weather', getWeather);
+app.get('/weather', weatherHandler);
+function weatherHandler(req, res) {
+  const {lat, lon} = req.query;
+  getWeather (lat, lon)
+    .then (summary => res.send(summary))
+    .catch ((err)=> {
+      console.error (err);
+      res.status (200).send(err.message);
+    });
+}
 
 app.get('/movies', getMovies);
 

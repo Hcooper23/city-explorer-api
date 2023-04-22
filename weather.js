@@ -1,7 +1,8 @@
 const axios = require('axios');
 require('dotenv').config();
+let cache = require('./cache.js');
 
-class Forecast {
+class Forecasts {
   constructor(forecastData) {
     this.date = forecastData.datetime;
     this.description = forecastData.weather.description;
@@ -10,27 +11,34 @@ class Forecast {
   }
 }
 
-async function getWeather(req, res, next) {
+async function getWeather(lat, lon) {
+  console.log ('this is get weather',lat, lon);
+  const key = 'weather-' + lat + lon;
+  const url = `http://api.weatherbit.io/v2.0/forecast/daily/?key=${process.env.WEATHERBIT_API_KEY}&lat=${lat}&lon=${lon}&days=5&units=I`;
+  if (cache[key] && (Date.now() - cache[key].timestamp < 500000)) {
+    console.log ('Cache Hit');
+    return cache[key].data;
+  } else {
+    console.log ('Cache missed');
+    const response = await axios.get(url);
+    const data = parseWeather(response.data);
+    cache[key] = {
+      timestamp: Date.now(),
+      data: data
+    };
+    return data;
+  }
+}
+
+function parseWeather(weatherData) {
   try {
-    let lat = parseFloat(req.query.lat);
-    let lon = parseFloat(req.query.lon);
-    let url = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHERBIT_API_KEY}&lat=${lat}&lon=${lon}&days=5&units=I`;
-    console.log(url);
-    let weatherResponse = await axios.get(url);
-    let forecasts = weatherResponse.data.data.map(weatherData => new Forecast(weatherData));
-    let formattedForecasts = forecasts.map(forecast => {
-      return {
-        date: forecast.date,
-        description: forecast.description,
-        temperatures: {
-          min: forecast.minTemp,
-          max: forecast.maxTemp
-        }
-      };
+    const weather = weatherData.data.map(day => {
+      return new Forecasts(day);
     });
-    res.status(200).send(formattedForecasts);
-  } catch (error) {
-    next(error);
+    return Promise.resolve(weather);
+  }
+  catch (error) {
+    return Promise.reject(error);
   }
 }
 
